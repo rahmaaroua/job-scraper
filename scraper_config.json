@@ -1,0 +1,19 @@
+{
+  "keywords": [
+    "Python Developer",
+    "Data Scientist"
+  ],
+  "locations": [
+    "Remote",
+    "United States"
+  ],
+  "max_jobs_per_platform": 50,
+  "platforms": {
+    "indeed": true,
+    "linkedin": true,
+    "glassdoor": true,
+    "jsearch": true
+  },
+  "jsearch_api_key": "e0f4ec9c84mshfa218ce688d9a9dp1bcb39jsn991f45daea3c",
+  "use_enhanced_scraper": false
+}
