@@ -1,3 +1,15 @@
+from prometheus_client import start_http_server, Counter
+import time
+
+# Start Prometheus metrics server on port 8000
+start_http_server(8000)
+
+# Example metric: count how many jobs were scraped
+jobs_scraped = Counter('jobs_scraped_total', 'Total number of jobs scraped')
+
+from dotenv import load_dotenv
+load_dotenv()  # Load .env file
+
 import logging
 import schedule
 import time
@@ -73,7 +85,7 @@ class JobScraperOrchestrator:
                 jobs = scraper.run()
                 all_jobs.extend(jobs)
                 all_stats.append(scraper.stats)
-
+                jobs_scraped.inc(len(jobs))  # Update Prometheus metric
                 logger.info(f"{platform_name} scraper completed: {len(jobs)} jobs found")
 
                 # Apply delay between platforms

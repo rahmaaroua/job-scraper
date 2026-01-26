@@ -49,6 +49,13 @@ class JSearchScraper:
         self.platforms = platforms or ['linkedin', 'glassdoor', 'indeed']
 
         self.logger = logging.getLogger(self.__class__.__name__)
+        # ADD THIS DEBUG CODE
+        self.logger = logging.getLogger(self.__class__.__name__)
+        if not self.api_key:
+            self.logger.error("❌ API key is None or empty!")
+        else:
+            self.logger.info(f"✓ API key loaded: {self.api_key[:10]}...{self.api_key[-4:]}")
+    # END DEBUG CODE
         self.stats = ScraperStats(
             platform="jsearch",
             start_time=datetime.now()

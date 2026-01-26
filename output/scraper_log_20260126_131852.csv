@@ -1,0 +1,3 @@
+platform,start_time,end_time,duration_seconds,jobs_found,jobs_saved,errors,error_count
+indeed,2026-01-26 13:17:44,2026-01-26 13:18:30,46.08605,16,16,0,0
+jsearch,2026-01-26 13:17:44,2026-01-26 13:18:47,63.184799,0,0,4,1

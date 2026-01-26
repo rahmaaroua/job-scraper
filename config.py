@@ -49,10 +49,10 @@ class ScraperConfig:
         if self.platforms is None:
             self.platforms = {
                 "indeed": True,
-                "linkedin": True,  # Requires login
-                "glassdoor": True,  # Requires login
-                "jsearch": True,  # Requires API key
-                "python_org": True  # Python.org jobs board
+                "linkedin": False,  # Requires login
+                "glassdoor": False,  # Requires login
+                "jsearch": True,    # Requires API key
+                "python_org": False  # Python.org jobs board
             }
 
         # Create output directory if it doesn't exist
@@ -64,30 +64,12 @@ class ScraperConfig:
         self.glassdoor_email = os.getenv("GLASSDOOR_EMAIL", self.glassdoor_email)
         self.glassdoor_password = os.getenv("GLASSDOOR_PASSWORD", self.glassdoor_password)
         self.jsearch_api_key = os.getenv("JSEARCH_API_KEY", self.jsearch_api_key)
-
-    def __post_init__(self):
-        """Initialize default values if not provided"""
-        if self.keywords is None:
-            self.keywords = ["Python Developer", "Data Scientist"]
-
-        if self.locations is None:
-            self.locations = ["United States", "Remote"]
-
-        if self.platforms is None:
-            self.platforms = {
-                "indeed": True,
-                "linkedin": False,  # Requires login
-                "glassdoor": False  # Requires login
-            }
-
-        # Create output directory if it doesn't exist
-        os.makedirs(self.output_dir, exist_ok=True)
-
-        # Load credentials from environment variables if available
-        self.linkedin_email = os.getenv("LINKEDIN_EMAIL", self.linkedin_email)
-        self.linkedin_password = os.getenv("LINKEDIN_PASSWORD", self.linkedin_password)
-        self.glassdoor_email = os.getenv("GLASSDOOR_EMAIL", self.glassdoor_email)
-        self.glassdoor_password = os.getenv("GLASSDOOR_PASSWORD", self.glassdoor_password)
+        
+        # Debug: Log if API key is loaded
+        if self.jsearch_api_key:
+            print(f"✓ JSearch API key loaded: {self.jsearch_api_key[:10]}...{self.jsearch_api_key[-4:]}")
+        else:
+            print("⚠ JSearch API key NOT found in environment variables")
 
 
 def load_config_from_file(config_file: str = "scraper_config.json") -> ScraperConfig:

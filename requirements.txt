@@ -1,7 +1,9 @@
 selenium==4.15.2
-pandas==2.1.3
+pandas>=2.0.0  # Let pip find the latest compatible version with wheels
 python-dotenv==1.0.0
 schedule==1.2.0
 beautifulsoup4==4.12.2
 lxml==4.9.3
 requests==2.31.0
+prometheus_client
+webdriver-manager
